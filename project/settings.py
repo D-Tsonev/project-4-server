@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-75m_+ly__-o#c9i00!^z7r6-r2e!q7ulmp8zl&87z@xibg8)of'
 
 if str(os.getenv('ENVIRONMENT')) == 'development':
-    SECRET_KEY = 'django-insecure-75m_+ly__-o#c9i00!^z7r6-r2e!q7ulmp8zl&87z@xibg8)of' 
+    SECRET_KEY = 'django-insecure-75m_+ly__-o#c9i00!^z7r6-r2e!q7ulmp8zl&87z@xibg8)of'
 else:
     SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
@@ -94,16 +94,42 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
+# DATABASES = { 
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'instruments-django-db',
+#         'HOST': 'localhost',
+#         'PORT': 5432
+#     }
+# }
+
+
+
+
+# DATABASES = {}
+# if str(os.getenv('ENVIRONMENT')) == 'development':
+#     DATABASES['default'] =  {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'instruments-django-db', 
+#         'HOST': 'localhost',
+#         'PORT': 5432
+#     }
+# else:
+#     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+
 DATABASES = {}
 if str(os.getenv('ENVIRONMENT')) == 'development':
     DATABASES['default'] =  {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'instruments-django-db' , 
+        'NAME': 'instruments-django-db',
         'HOST': 'localhost',
         'PORT': 5432
     }
 else:
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
